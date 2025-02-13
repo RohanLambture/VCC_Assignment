@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Microservices Frontend</title>
+    <script>
+        async function callBackend(service) {
+            try {
+                const response = await fetch(`/${service}`);
+                const text = await response.text();
+                document.getElementById('result').innerText = text;
+            } catch (error) {
+                document.getElementById('result').innerText = 'Error calling ' + service;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Microservices Frontend</h1>
+    <button onclick="callBackend('callBackend1')">Call Backend 1</button>
+    <button onclick="callBackend('callBackend2')">Call Backend 2</button>
+    <p id="result"></p>
+</body>
+</html>
